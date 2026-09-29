@@ -1,0 +1,394 @@
+{
+  "trendence_dashboard_title": "HR Linkedin Learning",
+  "spartnash_dashboard_title": "HR Linkedin Learning",
+  "comparison_items": [
+    {
+      "section": "Metadata",
+      "item_name": "Data Refresh Date",
+      "trendence_value": "8/20/2026 12:02:50 PM",
+      "spartnash_value": "8/20/2026 12:02:50 PM",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Time Period",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Relative Time",
+      "trendence_value": "Previous 6 Periods",
+      "spartnash_value": "Start of Year to Previous Period",
+      "status": "Different",
+      "difference": "Values differ between Trendence and Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Skill",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Business Unit",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Completion Rate",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Management Level",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category selected",
+      "trendence_value": "Business Unit",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Skill",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Course",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Course Duration",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Completion Rate",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Time Spent",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category option",
+      "trendence_value": "Time Period",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Metrics selected",
+      "trendence_value": "Associate Count",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Metrics option",
+      "trendence_value": "Hours Spent",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Metrics option",
+      "trendence_value": "Average Completion Rate",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Category",
+      "trendence_value": null,
+      "spartnash_value": "Business Unit",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Metrics",
+      "trendence_value": null,
+      "spartnash_value": "Associate Count",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Associate Count - P11",
+      "trendence_value": "52",
+      "spartnash_value": "52",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Associate Count - P10",
+      "trendence_value": "44 (+18.18%)",
+      "spartnash_value": "44 (+18.18%)",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Completion Rate - P11",
+      "trendence_value": "46.34%",
+      "spartnash_value": "46.34%",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Completion Rate - P10",
+      "trendence_value": "36.36% (+27.44%)",
+      "spartnash_value": "36.36% (+27.44%)",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Hours Spent - P11",
+      "trendence_value": "44.01",
+      "spartnash_value": "44.01",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "KPI",
+      "item_name": "Hours Spent - P10",
+      "trendence_value": "45.77 (-3.84%)",
+      "spartnash_value": "45.77 (-3.84%)",
+      "status": "Match",
+      "difference": null,
+      "confidence": null
+    },
+    {
+      "section": "Chart",
+      "item_name": "Associate Count by Business Unit - Corporate",
+      "trendence_value": "96",
+      "spartnash_value": "301",
+      "status": "Different",
+      "difference": "Values differ between Trendence and Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Chart",
+      "item_name": "Associate Count by Business Unit - Retail Business Unit",
+      "trendence_value": "17",
+      "spartnash_value": "35",
+      "status": "Different",
+      "difference": "Values differ between Trendence and Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Chart",
+      "item_name": "Associate Count by Business Unit - Supply Chain",
+      "trendence_value": "6",
+      "spartnash_value": "27",
+      "status": "Different",
+      "difference": "Values differ between Trendence and Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill",
+      "trendence_value": "Business Intelligence (BI)",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Associate Count",
+      "trendence_value": "4",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill",
+      "trendence_value": "Microsoft Power BI",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Associate Count",
+      "trendence_value": "4",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill",
+      "trendence_value": "Business Communications",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Associate Count",
+      "trendence_value": "3",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill",
+      "trendence_value": "Career Transitioning",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Associate Count",
+      "trendence_value": "3",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill",
+      "trendence_value": "Cloud Administration",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Associate Count",
+      "trendence_value": "3",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill: Emotional Intelligence",
+      "trendence_value": null,
+      "spartnash_value": "60",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill: Interpersonal Leadership",
+      "trendence_value": null,
+      "spartnash_value": "60",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill: Corporate Finance",
+      "trendence_value": null,
+      "spartnash_value": "58",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill: Finance",
+      "trendence_value": null,
+      "spartnash_value": "58",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    },
+    {
+      "section": "Table",
+      "item_name": "Skill: Financial Accounting",
+      "trendence_value": null,
+      "spartnash_value": "58",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": null
+    }
+  ],
+  "comparison_notes": []
+}

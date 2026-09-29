@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard Comparison</title>
+<style>
+  :root { color-scheme: light; --ink: #152536; --muted: #526575; --navy: #102f4a; --teal: #0f7180; --orange: #d85b32; --line: #c6d2dc; --surface: #ffffff; }
+  body { font-family: Segoe UI, Arial, sans-serif; margin: 0; min-height: 100vh; background-color: #e8eef3; background-image: linear-gradient(rgba(232,238,243,.84), rgba(232,238,243,.84)), url("https://www.zdnet.com/wp-content/uploads/sites/3/e56a949f-3a22-4aac-b90e-beaa903cd487.jpg?resize=1536,1024"); background-size: cover; background-position: center; background-attachment: fixed; color: var(--ink); }
+  header { background: rgba(255,255,255,.96); color: var(--navy); padding: 14px max(28px, calc((100% - 1100px) / 2)); border-bottom: 4px solid #e07843; box-shadow: 0 3px 14px rgba(24,53,76,.12); }
+  .header-inner { max-width: 1100px; min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-start; }
+  .brand-logos { display: flex; align-items: center; gap: 12px; flex-shrink: 0; order: -1; }
+  .brand-logos { animation: fadeIn .7s ease-out both; }
+  .brand-logos img { display: block; width: 164px; height: 54px; padding: 6px 10px; box-sizing: border-box; object-fit: contain; background: #fff; border: none; border-radius: 4px; }
+  .brand-logos img:first-child { transform: scale(1.16); transform-origin: left center; }
+  .brand-logos img:last-child { padding: 0; transform: scale(1.00); transform-origin: left center; }
+  main { max-width: 1100px; margin: 28px auto; padding: 0 20px 60px; }
+  .panels { display: flex; gap: 22px; flex-wrap: wrap; }
+  .panel { flex: 1 1 320px; background: rgba(255,255,255,.94); border: 1px solid rgba(210,221,229,.95); border-radius: 12px; box-shadow: 0 8px 24px rgba(24,53,76,.12); padding: 20px; }
+  .panel { animation: riseIn .65s ease-out both; }
+  .panel:nth-child(2) { animation-delay: .12s; }
+  .panel h2 { margin: 0 0 14px; font-size: 17px; color: var(--navy); }
+  .dropzone { border: 2px dashed #91a9ba; border-radius: 8px; padding: 28px 24px; text-align: center; cursor: pointer; color: #43596a; background: rgba(248,251,252,.72); transition: border-color .15s, background .15s, transform .15s; }
+  .dropzone:hover, .dropzone.drag { border-color: var(--teal); background: #e9f5f6; color: #183f4c; transform: translateY(-1px); }
+  .dropzone:focus-visible, #compareBtn:focus-visible, .download-button:focus-visible { outline: 3px solid rgba(15,113,128,.35); outline-offset: 3px; }
+  .file-list { list-style: none; margin: 14px 0 0; padding: 0; }
+  .file-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #d9e2e8; font-size: 13px; }
+  .file-list img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #c1ced8; }
+  .file-list .name { flex: 1; }
+  .file-list button { background: none; border: none; color: #c0392b; cursor: pointer; font-size: 13px; }
+  .actions { text-align: center; margin: 34px 0 30px; }
+  #compareBtn { background: var(--orange); color: #fff; border: none; padding: 13px 34px; font-size: 15px; font-weight: 600; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(216,91,50,.28); }
+  #compareBtn:hover { background: #b94727; }
+  #compareBtn:disabled { background: #91a5b5; cursor: not-allowed; box-shadow: none; }
+  #status { text-align: center; margin: 10px 0; font-size: 14px; color: #344b5d; min-height: 20px; }
+  .results-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 42px 0 18px; }
+  .results-header h2 { margin: 0; font-size: 22px; }
+  .download-button { display: inline-block; background: var(--teal); color: #fff; text-decoration: none; padding: 11px 18px; border-radius: 6px; font-weight: 600; }
+  .download-button:hover { background: #0b5965; }
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .summary-card { background: var(--surface); border-radius: 10px; padding: 18px; box-shadow: 0 4px 18px rgba(24,53,76,.1); border-top: 4px solid #718b9c; }
+  .summary-card.accent { border-top-color: var(--orange); }
+  .summary-card.good { border-top-color: #2a9d72; }
+  .summary-card strong { display: block; font-size: 28px; color: var(--navy); }
+  .summary-card span { color: #526575; font-size: 13px; }
+  .pair-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+  .pair-card { background: var(--surface); border-radius: 10px; padding: 18px; box-shadow: 0 4px 18px rgba(24,53,76,.1); }
+  .pair-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+  .pair-number { color: #78909c; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+  .pair-card h3 { margin: 4px 0 2px; font-size: 16px; color: var(--navy); }
+  .pair-card p { margin: 0; color: #526575; font-size: 13px; }
+  .pair-rate { color: var(--orange); font-size: 20px; font-weight: 700; white-space: nowrap; }
+  .pair-rate.good { color: #2a9d72; }
+  .bar { height: 7px; background: #d8e3e8; border-radius: 8px; margin: 16px 0 12px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--orange); border-radius: inherit; }
+  .bar span.good { background: #2a9d72; }
+  .pair-stats { display: flex; flex-wrap: wrap; gap: 14px; color: #617383; font-size: 12px; }
+  .pair-stats b { color: #243b4a; }
+  .usage-panel { background: #123b5d; color: #fff; border-radius: 10px; padding: 18px; margin-top: 18px; }
+  .usage-panel h3 { margin: 0 0 5px; font-size: 16px; }
+  .usage-panel p { margin: 0 0 14px; color: #cfe0e8; font-size: 13px; }
+  .usage-table { width: 100%; border-collapse: collapse; }
+  .usage-table th, .usage-table td { padding: 9px 8px; text-align: left; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .usage-table th { color: #a9d2df; font-weight: 600; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  @media (max-width: 760px) { .summary-grid, .pair-list { grid-template-columns: 1fr 1fr; } .results-header { align-items: flex-start; flex-direction: column; } }
+  @media (max-width: 560px) { .header-inner { align-items: flex-start; flex-direction: column; } .brand-logos { width: 100%; justify-content: flex-start; } .brand-logos img { width: min(164px, calc(50vw - 24px)); } }
+  @media (max-width: 480px) { .summary-grid, .pair-list { grid-template-columns: 1fr; } }
+  .pct-good { color: #1e7e34; font-weight: 600; }
+  .pct-bad { color: #c0392b; font-weight: 600; }
+  #downloadLink { display: inline-block; margin: 16px 0; }
+  input[type=file] { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand-logos" aria-label="Partner organizations">
+      <img src="https://www.cswg.com/wp-content/uploads/2026/05/CS_Wholesale_Grocers_logo.svg" alt="CS Wholesale Grocers" />
+      <img src="https://companieslogo.com/img/orig/SPTN_BIG-7b7969b0.png?t=1720244494" alt="SpartanNash" />
+    </div>
+  </div>
+</header>
+<main>
+  <div class="panels">
+    <section class="panel" data-folder="spartnash">
+      <h2>Spartnash</h2>
+      <div class="dropzone" data-folder="spartnash">Choose or drop Spartnash image(s)</div>
+      <input type="file" multiple accept=".png,.jpg,.jpeg" data-folder="spartnash" />
+      <ul class="file-list" data-folder="spartnash"></ul>
+    </section>
+    <section class="panel" data-folder="trendence">
+      <h2>Trendence</h2>
+      <div class="dropzone" data-folder="trendence">Choose or drop Trendence image(s)</div>
+      <input type="file" multiple accept=".png,.jpg,.jpeg" data-folder="trendence" />
+      <ul class="file-list" data-folder="trendence"></ul>
+    </section>
+  </div>
+
+  <div class="actions">
+    <button id="compareBtn">compare</button>
+    <a id="downloadLink" class="download-button" href="/api/download">Download Excel report</a>
+    <a id="downloadJsonLink" class="download-button" href="/api/download-json">Download JSON report</a>
+    <div id="status"></div>
+  </div>
+
+  <div id="resultsWrap" style="display:none">
+    <div class="results-header">
+      <div><h2>Comparison summary</h2><span id="summaryNote"></span></div>
+    </div>
+    <div id="summaryGrid" class="summary-grid"></div>
+    <div id="pairList" class="pair-list"></div>
+    <section id="usagePanel" class="usage-panel"></section>
+  </div>
+</main>
+
+<script src="/static/app.js?v=8"></script>
+</body>
+</html>

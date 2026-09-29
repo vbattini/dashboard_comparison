@@ -1,0 +1,929 @@
+{
+  "trendence_dashboard_title": "HR Now - Summary",
+  "spartnash_dashboard_title": "HR Now - Summary",
+  "comparison_items": [
+    {
+      "section": "Metadata",
+      "item_name": "Data Refresh Date",
+      "trendence_value": "8/20/2026 7:02:49 AM",
+      "spartnash_value": "8/21/2026 7:01:41 AM",
+      "status": "Different",
+      "difference": "Values differ between Trendence and Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Time Period",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Relative Time",
+      "trendence_value": "Last 4 Weeks",
+      "spartnash_value": "Last 4 Weeks",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Case Type",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Service Team",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Slicer",
+      "item_name": "Disposition Area",
+      "trendence_value": "All",
+      "spartnash_value": "All",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "KPI",
+      "item_name": "Total Cases Registered by Disposition Area",
+      "trendence_value": "2,248",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - (Blank)",
+      "trendence_value": "2,208",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - AEC",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - Associate",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - Candidate",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - External Caller",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - External Caller (VOE Only)",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - FEI",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - Former Associate",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type - HR Leader",
+      "trendence_value": "0",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Sunday Registered",
+      "trendence_value": "96",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Sunday Resolved",
+      "trendence_value": "61",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Monday Registered",
+      "trendence_value": "663",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Monday Resolved",
+      "trendence_value": "712",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Tuesday Registered",
+      "trendence_value": "657",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Tuesday Resolved",
+      "trendence_value": "694",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Wednesday Registered",
+      "trendence_value": "730",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Wednesday Resolved",
+      "trendence_value": "754",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Thursday Registered",
+      "trendence_value": "628",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Thursday Resolved",
+      "trendence_value": "612",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Friday Registered",
+      "trendence_value": "596",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Friday Resolved",
+      "trendence_value": "650",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Saturday Registered",
+      "trendence_value": "108",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved - Saturday Resolved",
+      "trendence_value": "77",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Segment - (Blank)",
+      "trendence_value": "2,208",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Segment - Corp Service Center",
+      "trendence_value": "387",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Segment - Distribution",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 0.8
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Segment - Retail",
+      "trendence_value": "849",
+      "spartnash_value": null,
+      "status": "Trendence Only",
+      "difference": "Only present in Trendence",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Caller Type",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Number of Cases",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Caller Type",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "(Blank)",
+      "trendence_value": null,
+      "spartnash_value": "2,208",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "AEC",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Associate",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Candidate",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "External Caller",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "External Caller (VOE Only)",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "FEI",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Former Associate",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "HR Leader",
+      "trendence_value": null,
+      "spartnash_value": "0",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered vs Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Number of Cases",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Sunday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "96",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Sunday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "61",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Monday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "712",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Monday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "663",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Tuesday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "694",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Tuesday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "657",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Wednesday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "753",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Wednesday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "730",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Thursday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "628",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Thursday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "612",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Friday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "650",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Friday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "596",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Saturday - Cases Registered",
+      "trendence_value": null,
+      "spartnash_value": "108",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Saturday - Cases Resolved",
+      "trendence_value": null,
+      "spartnash_value": "77",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Cases by Segment",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Number of Cases",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Segment",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "(Blank)",
+      "trendence_value": null,
+      "spartnash_value": "2,208",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Corp Service Center",
+      "trendence_value": null,
+      "spartnash_value": "387",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Distribution",
+      "trendence_value": null,
+      "spartnash_value": "849",
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "E-Mail",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Phone Call",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Chart",
+      "item_name": "Workday Cases",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Other",
+      "trendence_value": "2,248",
+      "spartnash_value": "2,248",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Workforce Administration",
+      "trendence_value": "330",
+      "spartnash_value": "330",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Pay or Tax",
+      "trendence_value": "135",
+      "spartnash_value": "135",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Talent ...",
+      "trendence_value": "104",
+      "spartnash_value": "104",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Benefits",
+      "trendence_value": "174",
+      "spartnash_value": "174",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Leav...",
+      "trendence_value": "75",
+      "spartnash_value": "75",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Poin...",
+      "trendence_value": "74",
+      "spartnash_value": "74",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - HR...",
+      "trendence_value": "61",
+      "spartnash_value": "61",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Talent Acquisition Oper...",
+      "trendence_value": "146",
+      "spartnash_value": "146",
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - My Information",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Time Off",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - Em...",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Treemap",
+      "item_name": "Cases Registered by Disposition Area - L...",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Match",
+      "difference": null,
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Pages",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Home",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Summary",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Create",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Performance",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Workspaces",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Compliance",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Yearly Metrics",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "HR Data Lake ...",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "HR Now Report",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "HR Linkedin Learning",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "HR Analytics Data Model",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "IT Operation...",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Power BI",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "How to switch to Legacy SN Fiscal Calendar",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    },
+    {
+      "section": "Layout",
+      "item_name": "Filters",
+      "trendence_value": null,
+      "spartnash_value": null,
+      "status": "Spartnash Only",
+      "difference": "Only present in Spartnash",
+      "confidence": 1.0
+    }
+  ],
+  "comparison_notes": [
+    "The 'Retail' bar in 'Cases by Segment' chart is visible but has no value displayed above it.",
+    "The legend items 'E-Mail', 'Phone Call', 'Workday Cases' are present but their direct correspondence to the bars in the 'Cases by Segment' chart is not explicit.",
+    "The value '2,248' is located below the 'Cases Registered by Disposition Area' treemap and is assumed to be a total for the treemap."
+  ]
+}

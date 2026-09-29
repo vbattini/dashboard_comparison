@@ -1,0 +1,2296 @@
+[
+  {
+    "dashboard_name": "HR Linkedin Learning",
+    "source": {
+      "dashboard": "HR Linkedin Learning",
+      "screenshot": "4.png"
+    },
+    "target": {
+      "dashboard": "HR Linkedin Learning",
+      "screenshot": "4.png"
+    },
+    "overall": {
+      "status": "PARTIAL_MATCH",
+      "match_percentage": 28
+    },
+    "visuals": [
+      {
+        "visual_name": "Data Refresh Date",
+        "visual_type": "metadata",
+        "status": "MATCH",
+        "source": {
+          "value": "8/20/2026 12:02:50 PM",
+          "details": null
+        },
+        "target": {
+          "value": "8/20/2026 12:02:50 PM",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Time Period",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Relative Time",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Previous 6 Periods",
+          "details": null
+        },
+        "target": {
+          "value": "Start of Year to Previous Period",
+          "details": null
+        },
+        "differences": [
+          "Values differ between Trendence and Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Business Unit",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Completion Rate",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Management Level",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Category selected",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Business Unit",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Skill",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Course",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Course Duration",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Completion Rate",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Time Spent",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Time Period",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Metrics selected",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Associate Count",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Metrics option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Hours Spent",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Metrics option",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Average Completion Rate",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Category",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "Business Unit",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Metrics",
+        "visual_type": "slicer",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "Associate Count",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Associate Count - P11",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "52",
+          "details": null
+        },
+        "target": {
+          "value": "52",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Associate Count - P10",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "44 (+18.18%)",
+          "details": null
+        },
+        "target": {
+          "value": "44 (+18.18%)",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Completion Rate - P11",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "46.34%",
+          "details": null
+        },
+        "target": {
+          "value": "46.34%",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Completion Rate - P10",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "36.36% (+27.44%)",
+          "details": null
+        },
+        "target": {
+          "value": "36.36% (+27.44%)",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Hours Spent - P11",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "44.01",
+          "details": null
+        },
+        "target": {
+          "value": "44.01",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Hours Spent - P10",
+        "visual_type": "kpi",
+        "status": "MATCH",
+        "source": {
+          "value": "45.77 (-3.84%)",
+          "details": null
+        },
+        "target": {
+          "value": "45.77 (-3.84%)",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Associate Count by Business Unit - Corporate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "96",
+          "details": null
+        },
+        "target": {
+          "value": "301",
+          "details": null
+        },
+        "differences": [
+          "Values differ between Trendence and Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Associate Count by Business Unit - Retail Business Unit",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "17",
+          "details": null
+        },
+        "target": {
+          "value": "35",
+          "details": null
+        },
+        "differences": [
+          "Values differ between Trendence and Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Associate Count by Business Unit - Supply Chain",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "6",
+          "details": null
+        },
+        "target": {
+          "value": "27",
+          "details": null
+        },
+        "differences": [
+          "Values differ between Trendence and Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Business Intelligence (BI)",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Associate Count",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "4",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Microsoft Power BI",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Associate Count",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "4",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Business Communications",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Associate Count",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "3",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Career Transitioning",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Associate Count",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "3",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Skill",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "Cloud Administration",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Associate Count",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": "3",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Skill: Emotional Intelligence",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "60",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill: Interpersonal Leadership",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "60",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill: Corporate Finance",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "58",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill: Finance",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "58",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Skill: Financial Accounting",
+        "visual_type": "table",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "58",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      }
+    ]
+  },
+  {
+    "dashboard_name": "HR Now - Summary",
+    "source": {
+      "dashboard": "HR Now - Summary",
+      "screenshot": "5.png"
+    },
+    "target": {
+      "dashboard": "HR Now - Summary",
+      "screenshot": "5.png"
+    },
+    "overall": {
+      "status": "PARTIAL_MATCH",
+      "match_percentage": 18
+    },
+    "visuals": [
+      {
+        "visual_name": "Data Refresh Date",
+        "visual_type": "metadata",
+        "status": "MISMATCH",
+        "source": {
+          "value": "8/20/2026 7:02:49 AM",
+          "details": null
+        },
+        "target": {
+          "value": "8/21/2026 7:01:41 AM",
+          "details": null
+        },
+        "differences": [
+          "Values differ between Trendence and Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Time Period",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Relative Time",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "Last 4 Weeks",
+          "details": null
+        },
+        "target": {
+          "value": "Last 4 Weeks",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Case Type",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Service Team",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Disposition Area",
+        "visual_type": "slicer",
+        "status": "MATCH",
+        "source": {
+          "value": "All",
+          "details": null
+        },
+        "target": {
+          "value": "All",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Total Cases Registered by Disposition Area",
+        "visual_type": "kpi",
+        "status": "MISMATCH",
+        "source": {
+          "value": "2,248",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - (Blank)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "2,208",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - AEC",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - Associate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - Candidate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - External Caller",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - External Caller (VOE Only)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - FEI",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - Former Associate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type - HR Leader",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "0",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Sunday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "96",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Sunday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "61",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Monday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "663",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Monday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "712",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Tuesday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "657",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Tuesday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "694",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Wednesday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "730",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Wednesday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "754",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Thursday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "628",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Thursday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "612",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Friday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "596",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Friday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "650",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Saturday Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "108",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved - Saturday Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "77",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Segment - (Blank)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "2,208",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Segment - Corp Service Center",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "387",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Segment - Distribution",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Segment - Retail",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": "849",
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Trendence"
+        ]
+      },
+      {
+        "visual_name": "Cases by Caller Type",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Number of Cases",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Caller Type",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "(Blank)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "2,208",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "AEC",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Associate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Candidate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "External Caller",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "External Caller (VOE Only)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "FEI",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Former Associate",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "HR Leader",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "0",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered vs Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Number of Cases",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Sunday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "96",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Sunday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "61",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Monday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "712",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Monday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "663",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Tuesday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "694",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Tuesday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "657",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Wednesday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "753",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Wednesday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "730",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Thursday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "628",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Thursday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "612",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Friday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "650",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Friday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "596",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Saturday - Cases Registered",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "108",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Saturday - Cases Resolved",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "77",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Cases by Segment",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Number of Cases",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Segment",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "(Blank)",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "2,208",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Corp Service Center",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "387",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Distribution",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": "849",
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "E-Mail",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Phone Call",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Workday Cases",
+        "visual_type": "chart",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Other",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "2,248",
+          "details": null
+        },
+        "target": {
+          "value": "2,248",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Workforce Administration",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "330",
+          "details": null
+        },
+        "target": {
+          "value": "330",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Pay or Tax",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "135",
+          "details": null
+        },
+        "target": {
+          "value": "135",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Talent ...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "104",
+          "details": null
+        },
+        "target": {
+          "value": "104",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Benefits",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "174",
+          "details": null
+        },
+        "target": {
+          "value": "174",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Leav...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "75",
+          "details": null
+        },
+        "target": {
+          "value": "75",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Poin...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "74",
+          "details": null
+        },
+        "target": {
+          "value": "74",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - HR...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "61",
+          "details": null
+        },
+        "target": {
+          "value": "61",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Talent Acquisition Oper...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": "146",
+          "details": null
+        },
+        "target": {
+          "value": "146",
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - My Information",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Time Off",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - Em...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Cases Registered by Disposition Area - L...",
+        "visual_type": "treemap",
+        "status": "MATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": []
+      },
+      {
+        "visual_name": "Pages",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Home",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Summary",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Create",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Performance",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Workspaces",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Compliance",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Yearly Metrics",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "HR Data Lake ...",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "HR Now Report",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "HR Linkedin Learning",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "HR Analytics Data Model",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "IT Operation...",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Power BI",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "How to switch to Legacy SN Fiscal Calendar",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      },
+      {
+        "visual_name": "Filters",
+        "visual_type": "layout",
+        "status": "MISMATCH",
+        "source": {
+          "value": null,
+          "details": null
+        },
+        "target": {
+          "value": null,
+          "details": null
+        },
+        "differences": [
+          "Only present in Spartnash"
+        ]
+      }
+    ]
+  }
+]
