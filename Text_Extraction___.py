@@ -31,7 +31,9 @@ MODEL_ID = "gemini-2.5-flash"
 TRENDENCE_FOLDER = Path("input_images") / "Trendence"
 SPARTNASH_FOLDER = Path("input_images") / "spartnash"
 OUTPUT_FOLDER = Path("comparison_results")
-OUTPUT_WORKBOOK = OUTPUT_FOLDER / "dashboard_comparison_complete.xlsx"
+REPORTS_FOLDER = OUTPUT_FOLDER / "reports"
+MANIFEST_JSON = Path(os.getenv("MANIFEST_JSON", "input_images/manifest.json"))
+OUTPUT_WORKBOOK = REPORTS_FOLDER / "dashboard_comparison_complete.xlsx"
 OUTPUT_JSONL = OUTPUT_FOLDER / "dashboard_comparison_complete.jsonl"
 OUTPUT_JSON = OUTPUT_FOLDER / "dashboard_comparison_complete.json"
 RAW_JSON_FOLDER = OUTPUT_FOLDER / "raw_json"
@@ -102,6 +104,34 @@ class ExtractionItem(BaseModel):
         default=False,
         description="True if the label ends with ellipses or is visibly clipped; otherwise False",
     )
+    kpi_title: Optional[str] = Field(
+        None,
+        description="Exact KPI card title text; populated only for kpi_card items",
+    )
+    kpi_value: Optional[str] = Field(
+        None,
+        description="Primary KPI display value as shown; populated only for kpi_card items",
+    )
+    series_name: Optional[str] = Field(
+        None,
+        description="Legend series name for a chart data row; null when the chart has no legend",
+    )
+    category: Optional[str] = Field(
+        None,
+        description="X-axis (or Y-axis) category label for a chart data row",
+    )
+    scrollable: bool = Field(
+        default=False,
+        description="True when the visual shows a scrollbar or scroll affordance; otherwise False",
+    )
+    clipped: bool = Field(
+        default=False,
+        description="True when labels/values are visibly clipped, cut off, or end with ellipses",
+    )
+    selected_options: List[str] = Field(
+        default_factory=list,
+        description="All currently selected options for a slicer/filter item; empty when none are selected",
+    )
     box_x1: int = Field(default=0, description="Left edge in 0-1000 coordinate space; 0 for non-treemap")
     box_y1: int = Field(default=0, description="Top edge in 0-1000 coordinate space; 0 for non-treemap")
     box_x2: int = Field(default=0, description="Right edge in 0-1000 coordinate space; 0 for non-treemap")
@@ -150,19 +180,19 @@ You are a precise dashboard transcription engine. Extract all visible elements f
 ### MANDATORY SPATIAL READING RULE (CHARTS)
 Reconstruct all chart data strictly from visual X-coordinate order. Never use OCR scan order, numeric value order, Y-coordinate order, or bar height order.
 
-1. READ X-AXIS CATEGORIES: Identify all X-axis categories from LEFT to RIGHT (e.g., Sunday -> Monday -> Tuesday -> Wednesday -> Thursday -> Friday -> Saturday).
-2. READ BARS WITHIN CATEGORIES: For each category, read bars strictly from LEFT to RIGHT:
-    - LEFT BAR (Dark Green) = Cases Registered
-    - RIGHT BAR (Light Green) = Cases Resolved
-3. PAIRING RULE: Combine both values into a single deterministic pair per category: [Left Bar Value, Right Bar Value].
+1. CHART TITLE: Read the chart title directly above the plot area; use it as the "<Chart Title>" prefix.
+2. LEGEND / SERIES: Read the legend (if visible) from LEFT to RIGHT, top row first. Reproduce each series name exactly as rendered and in that same order. Never assume a fixed set of series, colors, or names.
+3. X-AXIS / CATEGORIES: Identify all X-axis categories from LEFT to RIGHT (top-to-bottom for Y-axis categories).
+4. VALUES IN SERIES ORDER: For each category, read one value per series strictly in legend order. For clustered vertical bars, bars left-to-right within a category follow the legend order. Combine all series values for a category into a single deterministic row: "<Series1Value>, <Series2Value>, ...".
 
 ### MANDATORY TRANSCRIPTION RULES
-1. STRICT VISUAL TRANSCRIPTION: Transcribe strictly what is visible. Do not infer, calculate, or guess missing information.
-2. METADATA: Capture Dashboard Title, Page Header, Active Page/Tab Name, and Refresh Date/Time when visibly present. Store them in the corresponding top-level metadata fields as well as Metadata items when useful.
-3. SLICERS: Section "Slicer". Capture ONLY currently selected options (filled radio buttons/highlights).
-4. KPI CARDS: Section "KPI". Pair card title with primary value. Set visual_type = "kpi_card". Include prior period values or percentage changes in the value field if present.
-5. TABLES: Section "Table". Capture column headers and row cell values. Set visual_type = "table" or "matrix" only when the visual is clearly identifiable.
-6. VISUAL TYPE: For every KPI, chart, treemap, table, matrix, slicer, or other visual item, populate visual_type when it can be reliably identified from the screenshot. Never guess; use null when uncertain.
+1. STRICT VISUAL TRANSCRIPTION: Transcribe strictly what is visible. Do not infer, calculate, or guess missing information. If a value cannot be read clearly, leave it null rather than guessing.
+2. CONFIDENCE: Set confidence (0.0-1.0) on every item; lower it when text is blurred, clipped, or uncertain.
+3. METADATA: Capture Dashboard Title, Page Header, Active Page/Tab Name, and Refresh Date/Time when visibly present. Store them in the corresponding top-level metadata fields as well as Metadata items when useful.
+4. SLICERS: Section "Slicer". ALWAYS emit one item per visible filter (see slicer rules below).
+5. KPI CARDS: Section "KPI". Pair the KPI title with its primary value and populate kpi_title/kpi_value (see KPI rules below).
+6. TABLES: Section "Table". Capture column headers and row cell values. Set visual_type = "table" or "matrix" only when the visual is clearly identifiable.
+7. VISUAL TYPE: For every KPI, chart, treemap, table, matrix, slicer, or other visual item, populate visual_type when it can be reliably identified from the screenshot. Never guess; use null when uncertain.
 
 ---
 
@@ -173,36 +203,55 @@ Reconstruct all chart data strictly from visual X-coordinate order. Never use OC
 - Populate the top-level fields dashboard_title, page_header, active_page, and refresh_date whenever the corresponding text is visibly available.
 - Format: item_name = "<Metadata Category>", value = "<Exact Text Value>"
 
-#### 2. SLICERS & FILTERS (section: "Slicer")
-- Extract all top header slicers, side filter panels, and radio button options.
-- Capture ONLY currently selected options (filled radio buttons, highlighted values, active dropdown options). Omit unselected options.
-- Format: item_name = "<Slicer Name>", value = "<Selected Option Text>"
+#### 2. SLICERS & FILTERS (section: "Slicer") - ALWAYS LIST EVERY FILTER
+- For EVERY slicer/filter control visible (top header slicers, side filter panels, dropdowns, radio groups), emit EXACTLY ONE item. Never omit a filter, even when nothing is selected on it.
+- item_name = "<Filter/Slicer Name>".
+- Capture ALL currently selected options into selected_options (filled radio buttons, highlighted values, active dropdown options).
+- value = the selected options joined by ", ". If none are selected, leave value null and keep selected_options empty.
+- Never fabricate options that are not currently selected in this screenshot.
 
 #### 3. KPI CARDS (section: "KPI")
-- Extract primary stat callouts, scorecard metrics, and KPI containers.
-- Pair the KPI title with its primary display value.
+- One item per KPI card: pair the KPI title with its primary display value.
 - Set visual_type = "kpi_card".
-- If comparison values exist (e.g., prior period figures or percentage changes like "P10: 44 (+18.18%)"), append them to the value string.
-- Format: item_name = "<KPI Title>", value = "<Primary Value> [<Comparison Text>]"
+- Populate kpi_title with the exact title text and kpi_value with the primary display value as shown (no currency/percent symbol in kpi_value).
+- item_name = "<KPI Title>", value = "<Primary Display Value>".
+- If comparison values exist (e.g., prior period figures or percentage changes like "P10: 44 (+18.18%)"), append them to the value string only; never to kpi_value.
 
 #### 4. TABLES & DATA GRIDS (section: "Table")
-- Applies to full-screen tables or embedded data grids (e.g., Version logs, User lists, Skill metrics tables).
+- Applies to full-screen tables or embedded data grids.
 - Extract every visible row cell value associated with its column header.
 - Set visual_type = "table" or "matrix" only when clearly identifiable.
 - Format: item_name = "<Table Title or Column Header> - Row <Row Index or Identifier>", value = "<Cell Text>"
 
-#### 5. CHARTS & DATA VISUALIZATIONS (section: "Chart")
-- Set visual_type to the most specific reliably identifiable type, such as bar_chart, stacked_bar_chart, clustered_bar_chart, line_chart, pie_chart, donut_chart, funnel_chart, map, scatter_plot, or null.
-A. DUAL-SERIES / GROUPED BAR CHARTS:
-    - Process categories strictly from LEFT to RIGHT across the X-axis.
-    - Match numeric labels above bars using their horizontal center X-coordinate.
-    - item_name = "<Chart Title> - <Category Label>"
-    - value = "<Left Bar Value>, <Right Bar Value>"
+#### 5. CHARTS & DATA VISUALIZATIONS (section: "Chart") - HANDLE ANY CHART TYPE
+- Set visual_type to the most specific reliably identifiable type, such as bar_chart, stacked_bar_chart, clustered_bar_chart, line_chart, area_chart, pie_chart, donut_chart, funnel_chart, map, scatter_plot, gauge, waterfall, box_plot, matrix, or null.
 
-B. SINGLE SERIES / PIE / LINE CHARTS:
-    - Single-Bar / Line Charts: item_name = "<Chart Title> - <Category>", value = "<Displayed Value>"
-   - Extract category slice label, count value, and share percentage.
-    - Pie Charts: item_name = "<Chart Title> - <Slice Label>", value = "<Value> (<Percentage>)"
+A. GENERAL MULTI/SINGLE-SERIES BAR, LINE, AREA, COMBINED:
+    - Apply the MANDATORY SPATIAL READING RULE above.
+    - item_name = "<Chart Title> - <Category>"
+    - value = series values in legend/series order, comma-separated: "<Series1Value>, <Series2Value>, ..."
+    - For a single-series chart: value = "<Displayed Value>".
+
+B. PIE / DONUT:
+    - item_name = "<Chart Title> - <Slice Label>", value = "<Value> (<Percentage>)"
+    - Populate category = slice label.
+
+C. SCATTER / BUBBLE:
+    - One row per point: item_name = "<Chart Title> - <Point or Series Label>", value = "x, y".
+
+D. FUNNEL:
+    - Read stages strictly top-down and emit them in that order.
+
+E. STACKED / 100% STACKED BAR:
+    - Per category, read segments bottom-to-top; order the series values in the resulting value string bottom-to-top; still one row per category.
+
+F. OTHER (map, gauge, waterfall, box_plot, matrix):
+    - Capture visible labels/values with the most specific reliable visual_type; null when uncertain.
+
+G. SCROLL / CLIPPING FLAGS:
+    - If the plot area has a visible horizontal or vertical scrollbar, overflow arrows, or a "scroll"/"show all" affordance, set scrollable = true.
+    - If any label or value is clipped ("..."), cut off, or hidden by the plot-area edges, set clipped = true and transcribe only the visibly readable portion.
+    - A scrolling chart keeps "<Chart Title>" from the dashboard; do not invent an extra title suffix.
 
 #### 6. TREEMAPS (section: "Treemap")
 - Set visual_type = "treemap".
@@ -236,7 +285,7 @@ Preserve truncation exactly (e.g., use labels such as "Talent ...", "Leav...", "
 Do not include panel titles, navigation tabs, legends, or content outside the Treemap grid.
 """
 
-EXTRACTION_PROMPT_VERSION = "strict-left-to-right-chart-pairs-v29-metadata-visual-type"
+EXTRACTION_PROMPT_VERSION = "generic-chart-reader-manifest-sections-v30"
 EXTRACTION_MODELS = ("gemini-2.5-flash-lite", "gemini-2.5-flash")
 ENABLE_TREEMAP_REFINEMENT = os.getenv("ENABLE_TREEMAP_REFINEMENT", "1").lower() in {"1", "true", "yes"}
 MAX_PARALLEL_EXTRACTIONS = max(1, int(os.getenv("MAX_PARALLEL_EXTRACTIONS", "4")))
@@ -378,51 +427,6 @@ def read_tile(crop_bytes: bytes) -> Tuple[Optional[TileReading], Any]:
     return TileReading.model_validate_json(response.text), usage
 
 
-def extract_treemap_region(image_path: Path) -> dict:
-    crop_bytes = crop_tile_image(
-        image_path,
-        TileBox(x1=405, y1=575, x2=915, y2=910),
-        padding=0,
-    )
-    if crop_bytes is None:
-        return {"items": [], "llm_calls": 0, "prompt_tokens": 0, "output_tokens": 0, "total_tokens": 0}
-
-    response = client.models.generate_content(
-        model=MODEL_ID,
-        contents=[
-            types.Part.from_bytes(data=crop_bytes, mime_type="image/png"),
-            TREEMAP_REGION_PROMPT,
-        ],
-        config=types.GenerateContentConfig(
-            temperature=0,
-            top_p=0,
-            top_k=1,
-            seed=42,
-            response_mime_type="application/json",
-            response_schema=DashboardExtraction,
-        ),
-    )
-    usage = getattr(response, "usage_metadata", None)
-    if not response.text:
-        return {"items": [], "llm_calls": 1, "prompt_tokens": 0, "output_tokens": 0, "total_tokens": 0}
-
-    parsed = DashboardExtraction.model_validate_json(response.text)
-    items = []
-    for item in parsed.items:
-        item_data = item.model_dump()
-        item_data["section"] = "Treemap"
-        if not item_data["item_name"].startswith("Cases Registered"):
-            item_data["item_name"] = f"Cases Registered by Disposition Area - {item_data['item_name']}"
-        items.append(item_data)
-    return {
-        "items": items,
-        "llm_calls": 1,
-        "prompt_tokens": getattr(usage, "prompt_token_count", 0) or 0,
-        "output_tokens": getattr(usage, "candidates_token_count", 0) or 0,
-        "total_tokens": getattr(usage, "total_token_count", 0) or 0,
-    }
-
-
 def normalize_treemap_items(items: list[dict]) -> list[dict]:
     normalized = []
     for item in items:
@@ -524,18 +528,6 @@ def extract_dashboard_image(image_number: int, image_path: Path) -> dict:
         raise ValueError(f"Gemini extraction failed for image {image_number}: {last_error}") from last_error
 
     extraction["items"] = normalize_treemap_items(extraction.get("items", []))
-    has_treemap = any(normalize_label(item.get("section")) == "treemap" for item in extraction.get("items", []))
-
-    tile_refinement = (
-        extract_treemap_region(image_path)
-        if ENABLE_TREEMAP_REFINEMENT and has_treemap
-        else {"items": [], "llm_calls": 0, "prompt_tokens": 0, "output_tokens": 0, "total_tokens": 0}
-    )
-    if ENABLE_TREEMAP_REFINEMENT and tile_refinement["items"]:
-        extraction["items"] = [
-            item for item in extraction.get("items", [])
-            if normalize_label(item.get("section")) != "treemap"
-        ] + tile_refinement["items"]
 
     p_tokens = getattr(usage, "prompt_token_count", 0) or 0
     c_tokens = getattr(usage, "candidates_token_count", 0) or 0
@@ -545,12 +537,12 @@ def extract_dashboard_image(image_number: int, image_path: Path) -> dict:
         "width": width,
         "height": height,
         "pixels": width * height,
-        "llm_calls": llm_calls + tile_refinement["llm_calls"],
+        "llm_calls": llm_calls,
         "prompt_tokens": p_tokens,
         "prompt_text_tokens": _prompt_token_count,
         "image_input_tokens": max(0, p_tokens - (_prompt_token_count or 0)),
-        "output_tokens": c_tokens + tile_refinement["output_tokens"],
-        "total_tokens": t_tokens + tile_refinement["total_tokens"],
+        "output_tokens": c_tokens,
+        "total_tokens": t_tokens,
         "image_hash": image_content_hash(image_path),
     }
     return extraction
@@ -646,6 +638,73 @@ def write_aggregate_extractions(
         )
 
 
+def load_manifest(path: Path = MANIFEST_JSON) -> dict:
+    """Load per-image view context (page name + applied filter) supplied by the main app.
+
+    Expected shape: {"views": [{"image_number": 1, "page_name": "Overview",
+    "filter_name": "Time Period", "selected": ["Last 4 Weeks"], "state": "..."}]}.
+    Without a manifest, views fall back to numbered-pair behaviour with
+    state = "no_filter".
+    """
+    if not path.is_file():
+        print(f"No manifest found at {path}; using numbered-pair views with state=no_filter")
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"WARNING: could not read manifest {path}: {exc}")
+        return {}
+    entries = data.get("views", data) if isinstance(data, dict) else data
+    context: dict = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        try:
+            image_number = int(entry.get("image_number"))
+        except (TypeError, ValueError):
+            continue
+        filter_name = entry.get("filter_name") or None
+        selected = list(entry.get("selected") or [])
+        page_name = entry.get("page_name") or entry.get("page") or None
+        state = entry.get("state") or (
+            f"{filter_name}: {', '.join(selected)}" if filter_name and selected else "no_filter"
+        )
+        context[image_number] = {
+            "page_name": page_name,
+            "filter_name": filter_name,
+            "selected": selected,
+            "state": state,
+        }
+    return context
+
+
+def view_context_for(context: dict, image_number: int) -> dict:
+    entry = (context or {}).get(image_number) or {}
+    return {
+        "page_name": entry.get("page_name"),
+        "filter_name": entry.get("filter_name"),
+        "selected": list(entry.get("selected") or []),
+        "state": entry.get("state") or "no_filter",
+    }
+
+
+def filters_from_extraction(extraction: dict) -> list[dict]:
+    """Extract one {filter_name, selected} entry per Slicer-section item."""
+    filters = []
+    for item in extraction.get("items", []):
+        if normalize_label(item.get("section")) != "slicer":
+            continue
+        selected = item.get("selected_options")
+        if not isinstance(selected, list):
+            selected = [
+                part.strip()
+                for part in str(item.get("value") or "").split(",")
+                if part.strip()
+            ]
+        filters.append({"filter_name": item.get("item_name"), "selected": list(selected)})
+    return filters
+
+
 # ---------------------------------------------------------------------------
 # Comparison Logic
 # ---------------------------------------------------------------------------
@@ -671,7 +730,48 @@ def comma_separated_values(text: object) -> tuple[str, ...] | None:
     return tuple(sorted(values)) if len(values) > 1 and all(values) else None
 
 
+def _numeric_value(text: object) -> Optional[float]:
+    """Parse a display value as a plain number allowing $, comma, % and k/m suffixes."""
+    raw = display_value(text)
+    if not isinstance(raw, str):
+        return None
+    cleaned = raw.strip().replace(",", "").replace("$", "").replace("%", "").strip()
+    if not cleaned:
+        return None
+    multiplier = 1.0
+    suffix = cleaned[-1:]
+    if suffix in {"k", "K"}:
+        multiplier = 1000.0
+        cleaned = cleaned[:-1]
+    elif suffix in {"m", "M"}:
+        multiplier = 1000000.0
+        cleaned = cleaned[:-1]
+    if cleaned.casefold() in {"null", "none", "n/a"}:
+        return None
+    try:
+        return float(cleaned) * multiplier
+    except ValueError:
+        return None
+
+
+def _selected_options(item: dict) -> Optional[list[str]]:
+    options = item.get("selected_options")
+    if isinstance(options, list) and options:
+        return sorted(str(option).strip().casefold() for option in options if str(option).strip())
+    return None
+
+
 def values_match_for_item(left: dict, right: dict) -> bool:
+    left_selected = _selected_options(left)
+    right_selected = _selected_options(right)
+    if left_selected is not None and right_selected is not None:
+        return left_selected == right_selected
+
+    left_number = _numeric_value(left.get("value"))
+    right_number = _numeric_value(right.get("value"))
+    if left_number is not None and right_number is not None:
+        return abs(left_number - right_number) <= 1e-6 * max(1.0, abs(left_number), abs(right_number))
+
     left_values = comma_separated_values(left.get("value"))
     right_values = comma_separated_values(right.get("value"))
     if left_values is not None and right_values is not None:
@@ -750,26 +850,47 @@ def normalize_single_series_items(items: list[dict]) -> list[dict]:
     return normalized
 
 
+_LEGACY_SERIES_ROW_PATTERN = re.compile(r"^(.*?) - ([^-]+) \(([^()]+)\)$")
+
+
 def sort_and_format_chart_items(items: list[dict]) -> list[dict]:
-    """Normalize grouped bars to one left-to-right pair per X-axis category."""
-    grouped: dict[tuple[str, str], dict] = {}
+    """Group repeated chart rows into one row per (chart title, category).
+
+    Series values are kept in first-seen (legend) order and joined with a
+    comma. Legacy "<Title> - <Series> (<Category>)" rows are recognized
+    generically (no dashboard-specific series names), and chart rows without
+    a category pass through with their value reformatted.
+    """
     passthrough: list[dict] = []
+    grouped: dict[tuple[str, str], dict] = {}
 
     for item in items:
+        item = dict(item)
         if normalize_label(item.get("section")) != "chart":
             passthrough.append(item)
             continue
 
         item_name = str(item.get("item_name") or "")
-        match = re.match(r"^(.*?) - (Cases Registered|Cases Resolved) \(([^()]+)\)$", item_name)
-        if not match:
+        legacy_match = _LEGACY_SERIES_ROW_PATTERN.match(item_name)
+        chart_title = category = None
+        series_name = item.get("series_name")
+        if legacy_match:
+            chart_title, series_name, category = legacy_match.groups()
+        elif " - " in item_name:
+            chart_title, category = item_name.split(" - ", 1)
+        else:
+            chart_title = item_name
+
+        chart_title = (chart_title or item.get("item_name") or "Chart").strip()
+        category = (category or item.get("category") or "").strip() or None
+
+        if category is None:
             if "," in str(item.get("value") or ""):
                 item["value"] = format_chart_value(item.get("value"))
             passthrough.append(item)
             continue
 
-        chart_title, series_name, category = match.groups()
-        key = (chart_title, category)
+        key = (normalize_label(chart_title), normalize_label(category))
         pair = grouped.setdefault(
             key,
             {
@@ -777,34 +898,30 @@ def sort_and_format_chart_items(items: list[dict]) -> list[dict]:
                 "item_name": f"{chart_title} - {category}",
                 "series_values": {},
                 "confidence": [],
-                "original_index": len(grouped),
+                "scrollable": False,
+                "clipped": False,
+                "visual_type": item.get("visual_type"),
             },
         )
-        pair["series_values"][series_name] = format_chart_component(item.get("value"))
+        series_key = (
+            normalize_label(series_name)
+            if series_name
+            else f"series_{len(pair['series_values'])}"
+        )
+        pair["series_values"].setdefault(series_key, format_chart_component(item.get("value")))
+        pair["scrollable"] = pair["scrollable"] or bool(item.get("scrollable", False))
+        pair["clipped"] = pair["clipped"] or bool(item.get("clipped", False))
+        if not pair["visual_type"]:
+            pair["visual_type"] = item.get("visual_type")
         confidence = item.get("confidence")
         if isinstance(confidence, (int, float)):
             pair["confidence"].append(confidence)
 
     normalized_pairs = []
     for pair in grouped.values():
-        registered = pair["series_values"].get("Cases Registered", "")
-        resolved = pair["series_values"].get("Cases Resolved", "")
-        normalized_pairs.append(
-            {
-                "section": pair["section"],
-                "item_name": pair["item_name"],
-                "value": format_chart_pair(registered, resolved),
-                "confidence": mean(pair["confidence"]) if pair["confidence"] else None,
-                "_dual_series_clustered": True,
-                "_category_order": WEEKDAY_ORDER.get(normalize_label(pair["item_name"]).split("(")[-1].rstrip(")"), 99),
-                "_original_index": pair["original_index"],
-            }
-        )
-
-    normalized_pairs.sort(key=lambda item: (item["_category_order"], item["_original_index"]))
-    for item in normalized_pairs:
-        item.pop("_category_order", None)
-        item.pop("_original_index", None)
+        pair["value"] = format_chart_value(",".join(pair["series_values"].values()))
+        pair["confidence"] = mean(pair["confidence"]) if pair["confidence"] else None
+        normalized_pairs.append(pair)
     return passthrough + normalized_pairs
 
 
@@ -852,6 +969,28 @@ def compare_extractions(trendence_data: dict, spartnash_data: dict) -> dict:
         remaining_spartnash.remove(match)
         return match
 
+    def _carry(primary: dict, fallback: Optional[dict] = None) -> dict:
+        fallback = fallback or {}
+
+        def pick(*keys):
+            for candidate in (primary, fallback):
+                for key in keys:
+                    value = candidate.get(key)
+                    if value:
+                        return value
+            return None
+
+        return {
+            "visual_type": pick("visual_type"),
+            "kpi_title": pick("kpi_title"),
+            "kpi_value": pick("kpi_value"),
+            "series_name": pick("series_name"),
+            "category": pick("category"),
+            "scrollable": bool(pick("scrollable")),
+            "clipped": bool(pick("clipped")),
+            "selected_options": pick("selected_options"),
+        }
+
     for trendence_item in trendence_items:
         match = pop_exact_match(trendence_item) or pop_best_fuzzy_match(trendence_item)
         trendence_value = trendence_item.get("value")
@@ -868,6 +1007,7 @@ def compare_extractions(trendence_data: dict, spartnash_data: dict) -> dict:
                     "status": "Trendence Only",
                     "difference": "Only present in Trendence",
                     "confidence": mean(confidences) if confidences else None,
+                    **_carry(trendence_item),
                     "_orig_idx": orig_idx,
                 }
             )
@@ -886,6 +1026,7 @@ def compare_extractions(trendence_data: dict, spartnash_data: dict) -> dict:
                 "status": "Match" if values_match else "Different",
                 "difference": None if values_match else "Values differ between Trendence and Spartnash",
                 "confidence": mean(confidences) if confidences else None,
+                **_carry(trendence_item, match),
                 "_orig_idx": orig_idx,
             }
         )
@@ -901,6 +1042,7 @@ def compare_extractions(trendence_data: dict, spartnash_data: dict) -> dict:
                 "status": "Spartnash Only",
                 "difference": "Only present in Spartnash",
                 "confidence": confidence if isinstance(confidence, (int, float)) else None,
+                **_carry(spartnash_item),
                 "_orig_idx": spartnash_item.get("_orig_idx", 9999) + 1000,
             }
         )
@@ -913,11 +1055,8 @@ def compare_extractions(trendence_data: dict, spartnash_data: dict) -> dict:
 
         weekday = next((day for day in WEEKDAY_ORDER if f"({day})" in item_name), None)
         if weekday is not None and " - " in item_name:
-            parts = item_name.split(" - ", 1)
-            chart_title = parts[0]
-            series_label = parts[1] if len(parts) > 1 else ""
-            series_order = 0 if "cases registered" in series_label else 1
-            return (section_idx, 0, chart_title, WEEKDAY_ORDER[weekday], series_order, orig_idx, item_name)
+            chart_title = item_name.split(" - ", 1)[0]
+            return (section_idx, 0, chart_title, WEEKDAY_ORDER[weekday], 0, orig_idx, item_name)
 
         return (section_idx, 1, "", -1, 0, orig_idx, item_name)
 
@@ -1025,32 +1164,67 @@ def auto_fit_columns(ws, maximum_width: int = 45) -> None:
 
 
 def combine_grouped_chart_rows(items: list[dict]) -> list[dict]:
+    """Group comparison chart rows into one row per (chart title, category).
+
+    Mirrors sort_and_format_chart_items: series read from the visible legend
+    (first-seen order), legacy "<Title> - <Series> (<Category>)" rows handled
+    generically, rows without a category pass through after value formatting.
+    """
     grouped: dict[tuple[str, str], dict] = {}
     output: list[dict] = []
 
     for item in items:
-        match = re.match(
-            r"^(.*?) - (Cases Registered|Cases Resolved) \(([^()]+)\)$",
-            str(item.get("item_name") or ""),
-        )
-        if normalize_label(item.get("section")) != "chart" or not match:
+        item_name = str(item.get("item_name") or "")
+        legacy_match = _LEGACY_SERIES_ROW_PATTERN.match(item_name)
+        chart_title = category = None
+        series_name = item.get("series_name")
+        if legacy_match:
+            chart_title, series_name, category = legacy_match.groups()
+        elif " - " in item_name:
+            chart_title, category = item_name.split(" - ", 1)
+        else:
+            chart_title = item_name
+
+        if normalize_label(item.get("section")) != "chart":
             output.append(item)
             continue
 
-        chart_title, series, category = match.groups()
-        key = (chart_title, category)
+        chart_title = (chart_title or item.get("item_name") or "Chart").strip()
+        category = (category or item.get("category") or "").strip() or None
+        if category is None:
+            item = dict(item)
+            if "," in str(item.get("trendence_value") or ""):
+                item["trendence_value"] = format_chart_value(item.get("trendence_value"))
+            if "," in str(item.get("spartnash_value") or ""):
+                item["spartnash_value"] = format_chart_value(item.get("spartnash_value"))
+            output.append(item)
+            continue
+
+        key = (normalize_label(chart_title), normalize_label(category))
         combined = grouped.setdefault(
             key,
             {
                 "section": item.get("section") or "Chart",
-                "item_name": f"{chart_title} ({category})",
+                "item_name": f"{chart_title} - {category}",
                 "trendence": {},
                 "spartnash": {},
                 "confidences": [],
+                "scrollable": False,
+                "clipped": False,
+                "visual_type": item.get("visual_type"),
             },
         )
-        combined["trendence"][series] = format_chart_component(item.get("trendence_value"))
-        combined["spartnash"][series] = format_chart_component(item.get("spartnash_value"))
+        series_key = (
+            normalize_label(series_name)
+            if series_name
+            else f"series_{len(combined['trendence'])}"
+        )
+        combined["trendence"].setdefault(series_key, format_chart_component(item.get("trendence_value")))
+        combined["spartnash"].setdefault(series_key, format_chart_component(item.get("spartnash_value")))
+        combined["scrollable"] = combined["scrollable"] or bool(item.get("scrollable", False))
+        combined["clipped"] = combined["clipped"] or bool(item.get("clipped", False))
+        if not combined["visual_type"]:
+            combined["visual_type"] = item.get("visual_type")
         if isinstance(item.get("confidence"), (int, float)):
             combined["confidences"].append(item["confidence"])
 
@@ -1058,13 +1232,15 @@ def combine_grouped_chart_rows(items: list[dict]) -> list[dict]:
     for item in output:
         if "trendence" not in item:
             continue
-        registered = "Cases Registered"
-        resolved = "Cases Resolved"
-        trendence_value = format_chart_pair(
-            item["trendence"].get(registered, ""), item["trendence"].get(resolved, "")
+        series_keys = list(item["trendence"])
+        for key in item["spartnash"]:
+            if key not in series_keys:
+                series_keys.append(key)
+        trendence_value = format_chart_value(
+            ",".join(item["trendence"].get(key, "") for key in series_keys)
         )
-        spartnash_value = format_chart_pair(
-            item["spartnash"].get(registered, ""), item["spartnash"].get(resolved, "")
+        spartnash_value = format_chart_value(
+            ",".join(item["spartnash"].get(key, "") for key in series_keys)
         )
         values_match = values_match_for_item(
             {"value": trendence_value},
@@ -1074,8 +1250,8 @@ def combine_grouped_chart_rows(items: list[dict]) -> list[dict]:
             {
                 "trendence_value": trendence_value,
                 "spartnash_value": spartnash_value,
-            "status": "Match" if values_match else "Different",
-            "difference": None if values_match else "Values differ between Trendence and Spartnash",
+                "status": "Match" if values_match else "Different",
+                "difference": None if values_match else "Values differ between Trendence and Spartnash",
                 "confidence": mean(item["confidences"]) if item["confidences"] else None,
             }
         )
@@ -1220,6 +1396,10 @@ def to_dashboard_json(
     result: dict,
     trendence_image: Path,
     spartnash_image: Path,
+    *,
+    page_name: Optional[str] = None,
+    state: Optional[str] = None,
+    filters: Optional[list] = None,
 ) -> dict:
     """Convert an internal comparison result to the public dashboard JSON shape."""
     items = combine_grouped_chart_rows(result.get("comparison_items", []))
@@ -1228,6 +1408,26 @@ def to_dashboard_json(
     percentage = round(match_percentage * 100) if match_percentage is not None else 0
     overall_status = "MATCH" if percentage == 100 else "MISMATCH" if percentage == 0 else "PARTIAL_MATCH"
 
+    if filters is None:
+        filters = []
+        for item in items:
+            if normalize_label(item.get("section")) != "slicer":
+                continue
+            selected = item.get("selected_options")
+            if not isinstance(selected, list):
+                selected = [
+                    part.strip()
+                    for part in str(
+                        item.get("trendence_value") or item.get("spartnash_value") or ""
+                    ).split(",")
+                    if part.strip()
+                ]
+            filters.append({"filter_name": item.get("item_name"), "selected": selected})
+
+    kpis = []
+    charts = []
+    tables = []
+    mismatch_summary = []
     visuals = []
     for item in items:
         status = canonical_status(item.get("status"))
@@ -1242,21 +1442,73 @@ def to_dashboard_json(
                 "chart": None,
             }.get(section)
 
+        match_status = "MATCH" if status == "Match" else "MISMATCH"
+
+        if section == "kpi":
+            kpis.append(
+                {
+                    "kpi_title": item.get("kpi_title") or item.get("item_name"),
+                    "kpi_value": item.get("kpi_value")
+                    or (item.get("trendence_value") or item.get("spartnash_value")),
+                    "source_value": item.get("trendence_value"),
+                    "target_value": item.get("spartnash_value"),
+                    "status": match_status,
+                }
+            )
+        elif section == "chart":
+            charts.append(
+                {
+                    "chart_title": item.get("item_name"),
+                    "chart_type": visual_type,
+                    "scrollable": bool(item.get("scrollable", False)),
+                    "clipped": bool(item.get("clipped", False)),
+                    "source_value": item.get("trendence_value"),
+                    "target_value": item.get("spartnash_value"),
+                    "status": match_status,
+                }
+            )
+        elif section in {"table", "matrix"}:
+            tables.append(
+                {
+                    "table_title": item.get("item_name"),
+                    "visual_type": visual_type,
+                    "source_value": item.get("trendence_value"),
+                    "target_value": item.get("spartnash_value"),
+                    "status": match_status,
+                }
+            )
+
+        if status not in {"Match", "Uncertain"}:
+            mismatch_summary.append(
+                {
+                    "section": item.get("section") or "Unspecified",
+                    "item_name": item.get("item_name"),
+                    "source_value": item.get("trendence_value"),
+                    "target_value": item.get("spartnash_value"),
+                    "difference": item.get("difference") or "Values differ",
+                }
+            )
+
         visuals.append(
             {
                 "visual_name": item.get("item_name") or "Unnamed visual",
                 "visual_type": visual_type,
                 "section": item.get("section") or "Unspecified",
-                "status": "MATCH" if status == "Match" else "MISMATCH",
+                "status": match_status,
                 "source": {"value": item.get("trendence_value"), "details": None},
                 "target": {"value": item.get("spartnash_value"), "details": None},
                 "differences": [] if status == "Match" else [item.get("difference") or "Values differ"],
                 "confidence": item.get("confidence"),
+                "scrollable": bool(item.get("scrollable", False)),
+                "clipped": bool(item.get("clipped", False)),
             }
         )
 
     return {
         "dashboard_name": result.get("trendence_dashboard_title") or result.get("spartnash_dashboard_title") or f"Dashboard {image_number}",
+        "page_name": page_name,
+        "state": state,
+        "filters": filters,
         "metadata": {
             "dashboard_title": result.get("trendence_dashboard_title") or result.get("spartnash_dashboard_title"),
             "source_dashboard_title": result.get("trendence_dashboard_title"),
@@ -1274,6 +1526,15 @@ def to_dashboard_json(
             "screenshot": spartnash_image.name,
         },
         "overall": {"status": overall_status, "match_percentage": percentage},
+        "analysis": {
+            "overall_status": overall_status,
+            "match_percentage": percentage,
+            "slicers": filters,
+            "kpis": kpis,
+            "charts": charts,
+            "tables": tables,
+            "mismatch_summary": mismatch_summary,
+        },
         "visuals": visuals,
     }
 
@@ -1296,6 +1557,8 @@ def process_dashboard_comparisons(
 
     if not image_numbers:
         raise ValueError("No numbered dashboard images found in input directories.")
+
+    manifest = load_manifest()
 
     output_workbook.parent.mkdir(parents=True, exist_ok=True)
     RAW_JSON_FOLDER.mkdir(parents=True, exist_ok=True)
@@ -1331,6 +1594,8 @@ def process_dashboard_comparisons(
             write_error_sheet(wb, image_number, failed_extraction)
             continue
 
+        view = view_context_for(manifest, image_number)
+
         try:
             result = compare_extractions(
                 trendence_extraction,
@@ -1340,15 +1605,32 @@ def process_dashboard_comparisons(
                 json.dumps(result, indent=2, ensure_ascii=False),
                 encoding="utf-8",
             )
+            filters = filters_from_extraction(trendence_extraction) or filters_from_extraction(
+                spartnash_extraction
+            )
             jsonl_results.append(
                 {
                     "image_number": image_number,
+                    "page_name": view["page_name"],
+                    "state": view["state"],
+                    "filter_name": view["filter_name"],
+                    "selected": view["selected"],
                     "trendence_image": str(trendence_image),
                     "spartnash_image": str(spartnash_image),
                     **result,
                 }
             )
-            json_results.append(to_dashboard_json(image_number, result, trendence_image, spartnash_image))
+            json_results.append(
+                to_dashboard_json(
+                    image_number,
+                    result,
+                    trendence_image,
+                    spartnash_image,
+                    page_name=view["page_name"],
+                    state=view["state"],
+                    filters=filters,
+                )
+            )
             write_pair_sheet(wb, image_number, result, trendence_image, spartnash_image)
         except Exception as exc:
             write_error_sheet(wb, image_number, f"{type(exc).__name__}: {exc}")
