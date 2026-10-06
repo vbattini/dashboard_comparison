@@ -81,8 +81,21 @@ def _has_running_job() -> bool:
         return True
     for path in _JOB_FOLDER.glob("*.json"):
         try:
-            if json.loads(path.read_text(encoding="utf-8")).get("status") == "running":
+            job = json.loads(path.read_text(encoding="utf-8"))
+            if job.get("status") != "running":
+                continue
+            if path.stem in _compare_jobs:
                 return True
+
+            # A process restart or forced shutdown can leave a persisted job
+            # marked running even though no worker owns it anymore.
+            job.update(
+                {
+                    "status": "failed",
+                    "error": "Comparison interrupted before the server restarted.",
+                }
+            )
+            path.write_text(json.dumps(job), encoding="utf-8")
         except (OSError, json.JSONDecodeError):
             continue
     return False

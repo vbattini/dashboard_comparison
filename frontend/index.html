@@ -5,21 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dashboard Comparison</title>
 <style>
-  :root { color-scheme: light; --ink: #152536; --muted: #526575; --navy: #102f4a; --teal: #0f7180; --orange: #d85b32; --line: #c6d2dc; --surface: #ffffff; }
-  body { font-family: Segoe UI, Arial, sans-serif; margin: 0; min-height: 100vh; background-color: #e8eef3; background-image: linear-gradient(rgba(232,238,243,.84), rgba(232,238,243,.84)), url("https://www.zdnet.com/wp-content/uploads/sites/3/e56a949f-3a22-4aac-b90e-beaa903cd487.jpg?resize=1536,1024"); background-size: cover; background-position: center; background-attachment: fixed; color: var(--ink); }
-  header { background: rgba(255,255,255,.96); color: var(--navy); padding: 14px max(28px, calc((100% - 1100px) / 2)); border-bottom: 4px solid #e07843; box-shadow: 0 3px 14px rgba(24,53,76,.12); }
-  .header-inner { max-width: 1100px; min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-start; }
+  :root { color-scheme: light; --ink: #152536; --muted: #526575; --navy: #102f4a; --teal: #0f7180; --orange: #d85b32; --line: #c6d2dc; --surface: #ffffff; --mist: #e8eef3; }
+  * { box-sizing: border-box; }
+  body { font-family: Segoe UI, Arial, sans-serif; margin: 0; min-height: 100vh; background: var(--mist); background-image: linear-gradient(115deg, rgba(232,238,243,.94), rgba(232,238,243,.72)), url("https://www.zdnet.com/wp-content/uploads/sites/3/e56a949f-3a22-4aac-b90e-beaa903cd487.jpg?resize=1536,1024"); background-size: cover; background-position: center; background-attachment: fixed; color: var(--ink); }
+  header { background: rgba(255,255,255,.92); color: var(--navy); padding: 14px max(28px, calc((100% - 1100px) / 2)); border-bottom: 4px solid #e07843; box-shadow: 0 3px 14px rgba(24,53,76,.12); backdrop-filter: blur(12px); }
+  .header-inner { max-width: 1100px; min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .header-copy { margin-left: auto; text-align: right; }
+  .header-copy strong { display: block; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .header-copy span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
   .brand-logos { display: flex; align-items: center; gap: 12px; flex-shrink: 0; order: -1; }
   .brand-logos { animation: fadeIn .7s ease-out both; }
   .brand-logos img { display: block; width: 164px; height: 54px; padding: 6px 10px; box-sizing: border-box; object-fit: contain; background: #fff; border: none; border-radius: 4px; }
   .brand-logos img:first-child { transform: scale(1.16); transform-origin: left center; }
   .brand-logos img:last-child { padding: 0; transform: scale(1.00); transform-origin: left center; }
-  main { max-width: 1100px; margin: 28px auto; padding: 0 20px 60px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 54px 20px 76px; }
+  .intro { max-width: 760px; margin-bottom: 34px; animation: riseIn .65s ease-out both; }
+  .eyebrow { margin: 0 0 10px; color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .intro h1 { margin: 0; color: var(--navy); font-size: clamp(34px, 5vw, 58px); line-height: 1.02; letter-spacing: -.04em; }
+  .intro p:last-child { max-width: 610px; margin: 16px 0 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
   .panels { display: flex; gap: 22px; flex-wrap: wrap; }
-  .panel { flex: 1 1 320px; background: rgba(255,255,255,.94); border: 1px solid rgba(210,221,229,.95); border-radius: 12px; box-shadow: 0 8px 24px rgba(24,53,76,.12); padding: 20px; }
+  .panel { flex: 1 1 320px; background: rgba(255,255,255,.94); border: 1px solid rgba(210,221,229,.95); border-radius: 14px; box-shadow: 0 14px 34px rgba(24,53,76,.12); padding: 22px; }
   .panel { animation: riseIn .65s ease-out both; }
   .panel:nth-child(2) { animation-delay: .12s; }
-  .panel h2 { margin: 0 0 14px; font-size: 17px; color: var(--navy); }
+  .panel h2 { margin: 0 0 4px; font-size: 21px; color: var(--navy); }
+  .panel .panel-note { margin: 0 0 16px; color: var(--muted); font-size: 12px; }
   .dropzone { border: 2px dashed #91a9ba; border-radius: 8px; padding: 28px 24px; text-align: center; cursor: pointer; color: #43596a; background: rgba(248,251,252,.72); transition: border-color .15s, background .15s, transform .15s; }
   .dropzone:hover, .dropzone.drag { border-color: var(--teal); background: #e9f5f6; color: #183f4c; transform: translateY(-1px); }
   .dropzone:focus-visible, #compareBtn:focus-visible, .download-button:focus-visible { outline: 3px solid rgba(15,113,128,.35); outline-offset: 3px; }
@@ -28,11 +37,11 @@
   .file-list img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #c1ced8; }
   .file-list .name { flex: 1; }
   .file-list button { background: none; border: none; color: #c0392b; cursor: pointer; font-size: 13px; }
-  .actions { text-align: center; margin: 34px 0 30px; }
-  #compareBtn { background: var(--orange); color: #fff; border: none; padding: 13px 34px; font-size: 15px; font-weight: 600; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 10px rgba(216,91,50,.28); }
+  .actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 34px 0 30px; }
+  #compareBtn { background: var(--orange); color: #fff; border: none; padding: 14px 28px; font-size: 15px; font-weight: 700; border-radius: 7px; cursor: pointer; box-shadow: 0 7px 16px rgba(216,91,50,.28); }
   #compareBtn:hover { background: #b94727; }
   #compareBtn:disabled { background: #91a5b5; cursor: not-allowed; box-shadow: none; }
-  #status { text-align: center; margin: 10px 0; font-size: 14px; color: #344b5d; min-height: 20px; }
+  #status { flex-basis: 100%; text-align: center; margin: 2px 0 0; font-size: 13px; color: #344b5d; min-height: 20px; }
   .results-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 42px 0 18px; }
   .results-header h2 { margin: 0; font-size: 22px; }
   .download-button { display: inline-block; background: var(--teal); color: #fff; text-decoration: none; padding: 11px 18px; border-radius: 6px; font-weight: 600; }
@@ -56,7 +65,7 @@
   .bar span.good { background: #2a9d72; }
   .pair-stats { display: flex; flex-wrap: wrap; gap: 14px; color: #617383; font-size: 12px; }
   .pair-stats b { color: #243b4a; }
-  .usage-panel { background: #123b5d; color: #fff; border-radius: 10px; padding: 18px; margin-top: 18px; }
+  .usage-panel { background: linear-gradient(135deg, #123b5d, #0f7180); color: #fff; border-radius: 12px; padding: 20px; margin-top: 18px; box-shadow: 0 12px 28px rgba(16,47,74,.2); overflow-x: auto; }
   .usage-panel h3 { margin: 0 0 5px; font-size: 16px; }
   .usage-panel p { margin: 0 0 14px; color: #cfe0e8; font-size: 13px; }
   .usage-table { width: 100%; border-collapse: collapse; }
@@ -81,18 +90,28 @@
       <img src="https://www.cswg.com/wp-content/uploads/2026/05/CS_Wholesale_Grocers_logo.svg" alt="CS Wholesale Grocers" />
       <img src="https://companieslogo.com/img/orig/SPTN_BIG-7b7969b0.png?t=1720244494" alt="SpartanNash" />
     </div>
+    <div class="header-copy"><strong>Dashboard comparison</strong><span>Visual intelligence workspace</span></div>
   </div>
 </header>
 <main>
+  <section class="intro">
+    <p class="eyebrow">Compare / understand / act</p>
+    <h1>Find what changed<br />across every dashboard.</h1>
+    <p>Upload the two dashboard sets, run the comparison, and get a clear workbook with matched values, differences, and model usage in one place.</p>
+  </section>
   <div class="panels">
     <section class="panel" data-folder="spartnash">
+      <p class="eyebrow">01 / source set</p>
       <h2>Spartnash</h2>
+      <p class="panel-note">Add one or more reference dashboard images.</p>
       <div class="dropzone" data-folder="spartnash">Choose or drop Spartnash image(s)</div>
       <input type="file" multiple accept=".png,.jpg,.jpeg" data-folder="spartnash" />
       <ul class="file-list" data-folder="spartnash"></ul>
     </section>
     <section class="panel" data-folder="trendence">
+      <p class="eyebrow">02 / comparison set</p>
       <h2>Trendence</h2>
+      <p class="panel-note">Add the dashboard images to compare against.</p>
       <div class="dropzone" data-folder="trendence">Choose or drop Trendence image(s)</div>
       <input type="file" multiple accept=".png,.jpg,.jpeg" data-folder="trendence" />
       <ul class="file-list" data-folder="trendence"></ul>
@@ -100,7 +119,7 @@
   </div>
 
   <div class="actions">
-    <button id="compareBtn">compare</button>
+    <button id="compareBtn" type="button">compare</button>
     <a id="downloadLink" class="download-button" href="/api/download">Download Excel report</a>
     <a id="downloadJsonLink" class="download-button" href="/api/download-json">Download JSON report</a>
     <div id="status"></div>
@@ -116,6 +135,6 @@
   </div>
 </main>
 
-<script src="/static/app.js?v=8"></script>
+<script src="/static/app.js?v=9"></script>
 </body>
 </html>

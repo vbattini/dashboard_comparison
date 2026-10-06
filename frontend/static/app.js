@@ -1,5 +1,8 @@
 const folders = ["spartnash", "trendence"];
 const pendingUploads = new Set();
+const compareButton = document.getElementById("compareBtn");
+
+compareButton.disabled = false;
 
 async function refreshList(folder) {
   const res = await fetch(`/api/images/${folder}`);
